@@ -3,9 +3,7 @@
 SELECT
     c.category_id,
     c.name AS category_name,
-    ROUND(
-        AVG(EXTRACT(day FROM (r.return_date - r.rental_date))), 2
-    ) AS avg_rental_duration_days
+    ROUND(AVG(EXTRACT(day FROM (r.return_date - r.rental_date))), 2) AS avg_rental_duration_days
 FROM rental r
 JOIN inventory i ON r.inventory_id = i.inventory_id
 JOIN film f ON i.film_id = f.film_id
